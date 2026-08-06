@@ -1,0 +1,10 @@
+{
+  "name": "betflow",
+  "private": true,
+  "packageManager": "pnpm@10.15.0",
+  "scripts": {
+    "dev:web": "pnpm --filter @betflow/web dev",
+    "build:web": "pnpm --filter @betflow/web build",
+    "lint:web": "pnpm --filter @betflow/web lint"
+  }
+}
