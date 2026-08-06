@@ -26,6 +26,29 @@ Copy-Item .env.example apps/api/.env
 
 `.env.example`에는 로컬 개발 기본값만 포함되어 있습니다. 실제 비밀번호나 운영 환경 값은 커밋하지 않습니다.
 
+## Python 가상환경
+
+Python 가상환경은 프로젝트 루트의 `venv` 디렉터리를 사용합니다.
+
+프로젝트 루트에서 가상환경을 생성하고 활성화합니다.
+
+```powershell
+uv venv venv --python 3.12
+venv\scripts\activate
+```
+
+활성화한 루트 가상환경에 API 의존성을 설치합니다.
+
+```powershell
+uv sync --project apps/api --active
+```
+
+가상환경을 종료할 때는 다음 명령을 실행합니다.
+
+```powershell
+deactivate
+```
+
 ## PostgreSQL 실행
 
 프로젝트 루트에서 다음 명령을 실행합니다.
@@ -45,39 +68,35 @@ docker compose stop postgres
 
 ## API 실행
 
-Python 가상환경 디렉터리는 `apps/api/venv`를 사용합니다.
+프로젝트 루트에서 가상환경을 활성화한 뒤 API 디렉터리로 이동합니다.
 
 ```powershell
+venv\scripts\activate
 Set-Location apps/api
-uv venv venv --python 3.12
-$env:UV_PROJECT_ENVIRONMENT = "venv"
-uv sync
-uv run fastapi dev app/main.py --port 8001
+fastapi dev app/main.py --port 8001
 ```
 
 API 문서는 `http://localhost:8001/docs`, 헬스 체크는 `http://localhost:8001/health`에서 확인합니다.
 
-테스트와 정적 검사는 다음 명령으로 실행합니다.
+테스트와 정적 검사는 `apps/api`에서 실행합니다.
 
 ```powershell
-$env:UV_PROJECT_ENVIRONMENT = "venv"
-uv run pytest
-uv run ruff check app tests migrations
+pytest
+ruff check app tests migrations
 ```
 
 ## 데이터베이스 마이그레이션
 
-`apps/api`에서 다음 명령을 실행합니다.
+루트 가상환경을 활성화하고 `apps/api`로 이동한 뒤 실행합니다.
 
 ```powershell
-$env:UV_PROJECT_ENVIRONMENT = "venv"
-uv run alembic upgrade head
+alembic upgrade head
 ```
 
 새 마이그레이션을 생성할 때는 변경 목적이 드러나는 이름을 사용합니다.
 
 ```powershell
-uv run alembic revision --autogenerate -m "create odds tables"
+alembic revision --autogenerate -m "create odds tables"
 ```
 
 ## Web 실행
