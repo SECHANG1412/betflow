@@ -26,3 +26,10 @@ Thumbs.db
 # Logs
 *.log
 
+# Generated odds-history scan artifacts
+artifacts/odds-history-coverage/wisetoto_coverage_checkpoint.json
+artifacts/odds-history-coverage-sample*/
+artifacts/odds-history-poc/coverage-*/
+artifacts/odds-history-poc/round-*/
+artifacts/odds-history-poc/wisetoto_odds_history.csv
+artifacts/odds-history-poc/wisetoto_odds_history.json
