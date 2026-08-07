@@ -1,0 +1,336 @@
+{
+  "metadata": {
+    "collected_at": "2026-08-07T01:02:53.578529+00:00",
+    "source_pages": [
+      "https://www.wisetoto.com/index.htm?game_category=pt1&game_round=80&game_type=pt&game_year=2026&tab_type=proto",
+      "https://www.wisetoto.com/index.htm?game_category=pt1&game_round=79&game_type=pt&game_year=2026&tab_type=proto",
+      "https://www.wisetoto.com/index.htm?game_category=pt1&game_round=78&game_type=pt&game_year=2026&tab_type=proto"
+    ],
+    "source_endpoints": [
+      "https://www.wisetoto.com/util/gameinfo/get_proto_list.htm?game_category=pt1&game_year=2026&game_round=80&game_month=&game_day=&game_info_master_seq=31177&sports=sc&sort=game_no_asc&tab_type=proto",
+      "https://www.wisetoto.com/util/gameinfo/get_proto_list.htm?game_category=pt1&game_year=2026&game_round=79&game_month=&game_day=&game_info_master_seq=31176&sports=sc&sort=game_no_asc&tab_type=proto",
+      "https://www.wisetoto.com/util/gameinfo/get_proto_list.htm?game_category=pt1&game_year=2026&game_round=78&game_month=&game_day=&game_info_master_seq=31151&sports=sc&sort=game_no_asc&tab_type=proto"
+    ],
+    "checked_rounds": [
+      80,
+      79,
+      78
+    ],
+    "failed_rounds": {},
+    "requested_limit": 10,
+    "matches_with_history_found": 23,
+    "matches_written": 10,
+    "timestamps_available": false,
+    "history_semantics": "ordered transitions exposed by source; exact change times absent"
+  },
+  "matches": [
+    {
+      "source": "wisetoto",
+      "source_year": 2026,
+      "source_round": 80,
+      "source_match_id": "6277",
+      "source_schedule_id": "476710",
+      "starts_at": "2026-07-10 05:00:00",
+      "home_team": "프랑스",
+      "away_team": "모로코",
+      "result": "HOME",
+      "timestamps_available": false,
+      "snapshots": [
+        {
+          "sequence": 0,
+          "observed_at": null,
+          "home": 1.49,
+          "draw": 3.7,
+          "away": 5.9
+        },
+        {
+          "sequence": 1,
+          "observed_at": null,
+          "home": 1.48,
+          "draw": 3.85,
+          "away": 5.7
+        }
+      ]
+    },
+    {
+      "source": "wisetoto",
+      "source_year": 2026,
+      "source_round": 79,
+      "source_match_id": "5751",
+      "source_schedule_id": "476706",
+      "starts_at": "2026-07-07 04:00:00",
+      "home_team": "포르투갈",
+      "away_team": "스페인",
+      "result": "AWAY",
+      "timestamps_available": false,
+      "snapshots": [
+        {
+          "sequence": 0,
+          "observed_at": null,
+          "home": 3.6,
+          "draw": 3.45,
+          "away": 1.84
+        },
+        {
+          "sequence": 1,
+          "observed_at": null,
+          "home": 3.85,
+          "draw": 3.4,
+          "away": 1.79
+        }
+      ]
+    },
+    {
+      "source": "wisetoto",
+      "source_year": 2026,
+      "source_round": 79,
+      "source_match_id": "5895",
+      "source_schedule_id": "476708",
+      "starts_at": "2026-07-08 01:00:00",
+      "home_team": "아르헨티",
+      "away_team": "이집트",
+      "result": "HOME",
+      "timestamps_available": false,
+      "snapshots": [
+        {
+          "sequence": 0,
+          "observed_at": null,
+          "home": 1.37,
+          "draw": 3.95,
+          "away": 7.8
+        },
+        {
+          "sequence": 1,
+          "observed_at": null,
+          "home": 1.32,
+          "draw": 4.3,
+          "away": 8.3
+        }
+      ]
+    },
+    {
+      "source": "wisetoto",
+      "source_year": 2026,
+      "source_round": 78,
+      "source_match_id": "4992",
+      "source_schedule_id": "476178",
+      "starts_at": "2026-07-03 12:00:00",
+      "home_team": "스위스",
+      "away_team": "알제리",
+      "result": "HOME",
+      "timestamps_available": false,
+      "snapshots": [
+        {
+          "sequence": 0,
+          "observed_at": null,
+          "home": 1.95,
+          "draw": 3.15,
+          "away": 3.55
+        },
+        {
+          "sequence": 1,
+          "observed_at": null,
+          "home": 1.89,
+          "draw": 3.15,
+          "away": 3.8
+        },
+        {
+          "sequence": 2,
+          "observed_at": null,
+          "home": 1.86,
+          "draw": 3.15,
+          "away": 3.9
+        },
+        {
+          "sequence": 3,
+          "observed_at": null,
+          "home": 1.81,
+          "draw": 3.25,
+          "away": 4.0
+        }
+      ]
+    },
+    {
+      "source": "wisetoto",
+      "source_year": 2026,
+      "source_round": 78,
+      "source_match_id": "5114",
+      "source_schedule_id": "476186",
+      "starts_at": "2026-07-04 03:00:00",
+      "home_team": "호주",
+      "away_team": "이집트",
+      "result": "DRAW",
+      "timestamps_available": false,
+      "snapshots": [
+        {
+          "sequence": 0,
+          "observed_at": null,
+          "home": 3.1,
+          "draw": 2.8,
+          "away": 2.32
+        },
+        {
+          "sequence": 1,
+          "observed_at": null,
+          "home": 3.25,
+          "draw": 2.8,
+          "away": 2.24
+        }
+      ]
+    },
+    {
+      "source": "wisetoto",
+      "source_year": 2026,
+      "source_round": 78,
+      "source_match_id": "5190",
+      "source_schedule_id": "476188",
+      "starts_at": "2026-07-04 10:30:00",
+      "home_team": "콜롬비아",
+      "away_team": "가나",
+      "result": "HOME",
+      "timestamps_available": false,
+      "snapshots": [
+        {
+          "sequence": 0,
+          "observed_at": null,
+          "home": 1.4,
+          "draw": 3.7,
+          "away": 7.9
+        },
+        {
+          "sequence": 1,
+          "observed_at": null,
+          "home": 1.36,
+          "draw": 4.2,
+          "away": 7.3
+        }
+      ]
+    },
+    {
+      "source": "wisetoto",
+      "source_year": 2026,
+      "source_round": 78,
+      "source_match_id": "5300",
+      "source_schedule_id": "464913",
+      "starts_at": "2026-07-04 19:30:00",
+      "home_team": "전북현대",
+      "away_team": "강원FC",
+      "result": "AWAY",
+      "timestamps_available": false,
+      "snapshots": [
+        {
+          "sequence": 0,
+          "observed_at": null,
+          "home": 2.1,
+          "draw": 2.85,
+          "away": 3.1
+        },
+        {
+          "sequence": 1,
+          "observed_at": null,
+          "home": 2.18,
+          "draw": 2.85,
+          "away": 2.95
+        },
+        {
+          "sequence": 2,
+          "observed_at": null,
+          "home": 2.3,
+          "draw": 2.85,
+          "away": 2.75
+        }
+      ]
+    },
+    {
+      "source": "wisetoto",
+      "source_year": 2026,
+      "source_round": 78,
+      "source_match_id": "5308",
+      "source_schedule_id": "464912",
+      "starts_at": "2026-07-04 19:30:00",
+      "home_team": "대전하나",
+      "away_team": "부천FC",
+      "result": "DRAW",
+      "timestamps_available": false,
+      "snapshots": [
+        {
+          "sequence": 0,
+          "observed_at": null,
+          "home": 1.67,
+          "draw": 3.15,
+          "away": 4.3
+        },
+        {
+          "sequence": 1,
+          "observed_at": null,
+          "home": 1.71,
+          "draw": 3.0,
+          "away": 4.3
+        },
+        {
+          "sequence": 2,
+          "observed_at": null,
+          "home": 1.64,
+          "draw": 3.0,
+          "away": 4.85
+        }
+      ]
+    },
+    {
+      "source": "wisetoto",
+      "source_year": 2026,
+      "source_round": 78,
+      "source_match_id": "5316",
+      "source_schedule_id": "464911",
+      "starts_at": "2026-07-04 19:30:00",
+      "home_team": "FC안양",
+      "away_team": "포항스틸",
+      "result": "AWAY",
+      "timestamps_available": false,
+      "snapshots": [
+        {
+          "sequence": 0,
+          "observed_at": null,
+          "home": 2.75,
+          "draw": 2.85,
+          "away": 2.3
+        },
+        {
+          "sequence": 1,
+          "observed_at": null,
+          "home": 2.75,
+          "draw": 2.75,
+          "away": 2.37
+        }
+      ]
+    },
+    {
+      "source": "wisetoto",
+      "source_year": 2026,
+      "source_round": 78,
+      "source_match_id": "5324",
+      "source_schedule_id": "468227",
+      "starts_at": "2026-07-04 19:30:00",
+      "home_team": "충북청주",
+      "away_team": "대구FC",
+      "result": "AWAY",
+      "timestamps_available": false,
+      "snapshots": [
+        {
+          "sequence": 0,
+          "observed_at": null,
+          "home": 4.1,
+          "draw": 3.35,
+          "away": 1.65
+        },
+        {
+          "sequence": 1,
+          "observed_at": null,
+          "home": 4.2,
+          "draw": 3.5,
+          "away": 1.6
+        }
+      ]
+    }
+  ]
+}
