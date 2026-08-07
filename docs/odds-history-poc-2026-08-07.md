@@ -1,27 +1,26 @@
-# Odds history feasibility PoC — 2026-08-07
+# 과거 배당 이력 수집 가능성 PoC — 2026-08-07
 
-## Decision
+## 결론
 
-The core dataset is technically obtainable from WiseToto without login: its
-public Proto round response contains ordered `(previous) -> (changed)` odds
-transitions for football 1X2 rows. Exact change timestamps are not included.
+로그인 없이도 와이즈토토에서 핵심 데이터를 기술적으로 수집할 수 있다.
+공개된 프로토 회차 응답에는 축구 승무패 경기의 순서가 보존된
+`(기존) -> (변경)` 배당 변동 내역이 포함되어 있다. 단, 정확한 변경 시각은 제공되지 않는다.
 
-This is a promising source, but it is not yet approved as a production data
-dependency. Terms of use, redistribution rights, completeness, and structural
-stability still require confirmation.
+유망한 데이터 출처이지만 아직 운영 환경의 데이터 의존 대상으로 확정할 단계는 아니다.
+이용약관, 재배포 권한, 데이터 완전성 및 응답 구조의 안정성을 추가로 확인해야 한다.
 
-## Verified result
+## 검증 결과
 
-- Reconstructed one match with four ordered snapshots and a result.
-- Expanded successfully to ten matches from 2026 round 78.
-- Wrote normalized JSON and CSV.
-- Verified historical transitions in 2010 round 1.
-- The year selector exposes 2009–2026, but sampled 2009 rounds 1 and 50 had no
-  football 1X2 rows with change history. Therefore the currently demonstrated
-  lower bound is 2010, not 2009.
-- No login, cookie, or paid API was required for the successful WiseToto run.
+- 경기 결과와 순서가 보존된 배당 스냅샷 4개를 한 경기에서 재구성했다.
+- 2026년 78회차를 대상으로 10경기까지 성공적으로 확장했다.
+- 정규화한 데이터를 JSON과 CSV로 저장했다.
+- 2010년 1회차에서도 과거 배당 변동 내역을 확인했다.
+- 연도 선택 항목에는 2009~2026년이 표시되지만, 표본으로 확인한 2009년 1회차와
+  50회차에는 변경 이력이 있는 축구 승무패 경기가 없었다. 따라서 현재 검증된
+  수집 가능 시점의 하한은 2009년이 아닌 2010년이다.
+- 와이즈토토 수집에 로그인, 쿠키 또는 유료 API가 필요하지 않았다.
 
-Example (Switzerland vs Algeria, 2026 round 78):
+예시(스위스 대 알제리, 2026년 78회차):
 
 ```text
 seq 0  1.95 / 3.15 / 3.55
@@ -31,30 +30,29 @@ seq 3  1.81 / 3.25 / 4.00
 result = HOME
 ```
 
-## Source assessment
+## 출처별 평가
 
-| Source | Full ordered history | Timestamps | Free/no login | PoC assessment |
+| 출처 | 전체 변경 순서 | 변경 시각 | 무료·비로그인 | PoC 평가 |
 |---|---:|---:|---:|---|
-| WiseToto | Yes, sampled | No | Yes | Technically viable; HTML/AJAX contract is undocumented and can change |
-| Betman | Not demonstrated | Not demonstrated | Public page exists | Direct automated request was reset; official page is suited to forward collection, not proven historical reconstruction |
-| BetScore | Claimed to track Betman flow | Unknown | No public web/API proof | App description mentions premium analysis; no free public historical export/API found |
-| TotalCorner | Page claims odds movement | Unknown | Page is public | Cloudflare challenge blocks unattended collection; unsuitable for stable free automation |
-| The Odds API | Yes | Yes | No | Historical endpoint is paid, so excluded by requirement |
+| 와이즈토토 | 표본에서 확인 | 없음 | 가능 | 기술적으로 가능하나 HTML/AJAX 규격이 문서화되지 않아 변경될 수 있음 |
+| 베트맨 | 확인하지 못함 | 확인하지 못함 | 공개 페이지 존재 | 직접 자동 요청이 초기화됨. 공식 페이지는 향후 데이터 수집에는 적합하지만 과거 이력 복원 가능성은 입증되지 않음 |
+| BetScore | 베트맨 배당 흐름을 추적한다고 명시 | 알 수 없음 | 공개 웹/API 근거 없음 | 앱 설명에 프리미엄 분석이 언급되며 무료 과거 데이터 내보내기나 공개 API를 찾지 못함 |
+| TotalCorner | 페이지에서 배당 변동을 제공한다고 명시 | 알 수 없음 | 페이지 공개 | Cloudflare 인증 절차가 무인 수집을 차단하므로 안정적인 무료 자동화에 부적합 |
+| The Odds API | 가능 | 있음 | 불가능 | 과거 데이터 API가 유료이므로 이번 요구사항에서 제외 |
 
-## Data caveats
+## 데이터 관련 주의사항
 
-1. WiseToto gives transition order but not transition time.
-2. The response is explicitly described by WiseToto as unofficial/provisional;
-   official results should be cross-checked.
-3. Completeness must be measured across all rounds: a row without a change
-   tooltip may mean no change, or missing retained history.
-4. The source uses undocumented page and AJAX parameters. Add fixtures,
-   schema checks, throttling, retries, and a source-health monitor before any
-   bulk backfill.
-5. Do not begin model, frontend, or final database design until coverage and
-   terms/permission have been audited.
+1. 와이즈토토에서는 변경 순서를 확인할 수 있지만 변경 시각은 제공하지 않는다.
+2. 와이즈토토는 해당 응답을 비공식·잠정 정보라고 명시하므로 공식 경기 결과와
+   교차 검증해야 한다.
+3. 전체 회차를 대상으로 완전성을 측정해야 한다. 변경 안내가 없는 행은 실제로
+   배당 변경이 없었거나, 과거 이력이 보존되지 않은 경우일 수 있다.
+4. 데이터 출처가 문서화되지 않은 페이지와 AJAX 매개변수를 사용한다. 대량 과거 데이터
+   수집 전에 고정 응답 샘플, 스키마 검사, 요청 속도 제한, 재시도 및 출처 상태 감시를 추가해야 한다.
+5. 수집 범위와 이용약관·허용 범위를 검토하기 전에는 모델, 프론트엔드 또는 최종
+   데이터베이스 설계를 시작하지 않는다.
 
-## Reproduction
+## 실행 방법
 
 ```powershell
 venv\Scripts\python.exe apps\api\scripts\odds_history_poc.py `
@@ -62,19 +60,19 @@ venv\Scripts\python.exe apps\api\scripts\odds_history_poc.py `
   --output-dir artifacts\odds-history-poc\round-78
 ```
 
-Outputs:
+생성 파일:
 
 - `artifacts/odds-history-poc/round-78/wisetoto_odds_history.json`
 - `artifacts/odds-history-poc/round-78/wisetoto_odds_history.csv`
 
-## Next gate
+## 다음 단계의 진행 조건
 
-Before approving a full backfill, scan every round from 2010–2026 and report:
+전체 과거 데이터 수집을 승인하기 전에 2010~2026년의 모든 회차를 조사하고 다음 항목을 보고한다.
 
-- total football 1X2 matches;
-- matches with zero, one, or multiple changes;
-- broken/misaligned transition chains;
-- result completeness;
-- per-year coverage and gaps;
-- request failure/rate-limit behavior;
-- written permission or terms assessment for automated collection and use.
+- 전체 축구 승무패 경기 수
+- 변경 횟수가 0회, 1회 또는 여러 회인 경기 수
+- 끊어지거나 서로 맞지 않는 배당 변동 연결
+- 경기 결과 데이터의 완전성
+- 연도별 수집 범위와 누락 구간
+- 요청 실패 및 호출 제한 동작
+- 자동 수집·사용에 관한 서면 허가 또는 이용약관 검토 결과
