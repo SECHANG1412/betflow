@@ -31,10 +31,28 @@
 검증 과정과 결과는 [`docs`](docs)에서 확인할 수 있습니다.
 
 ## 기술 스택
+
 - Web: Next.js 16, React 19, TypeScript, Tailwind CSS
 - API: FastAPI, Python 3.12, SQLAlchemy
 - Database: PostgreSQL 17, Alembic
 - Package managers: pnpm, uv
+
+## 프로젝트 구조
+
+```text
+betflow/
+├── apps/
+│   ├── api/          # FastAPI 애플리케이션, 수집 스크립트, 마이그레이션, 테스트
+│   └── web/          # Next.js 웹 애플리케이션
+├── artifacts/        # 선별해 보존하는 검증 결과와 로컬 생성 산출물
+├── docs/             # 데이터 수집 PoC, 범위 검사, 품질 검증 문서
+├── compose.yaml      # 로컬 PostgreSQL 구성
+└── README.md
+```
+
+`artifacts`에는 Git으로 관리하는 대표 결과와 로컬에서만 사용하는 재생 가능한 중간 산출물이 함께
+존재할 수 있습니다. 체크포인트와 임시 PoC 결과는 `.gitignore` 정책을 따르며, 새로운 대용량 파일을
+추가하기 전에는 추적 필요성을 먼저 확인합니다.
 
 ## 사전 요구사항
 
@@ -109,7 +127,7 @@ API 문서는 `http://localhost:8001/docs`, 헬스 체크는 `http://localhost:8
 
 ```powershell
 pytest
-ruff check app tests migrations
+ruff check app migrations scripts tests
 ```
 
 ## 데이터베이스 마이그레이션
