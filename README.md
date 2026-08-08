@@ -130,6 +130,24 @@ pytest
 ruff check app migrations scripts tests
 ```
 
+### 와이즈토토 배당 이력 수집
+
+수집 파이프라인은 요청 간격과 재시도를 적용하며, 중단되더라도 체크포인트를 이용해 완료된 회차
+다음부터 재개합니다. 결과는 기본적으로 `artifacts/wisetoto-history/<연도>`에 JSON과 CSV로 저장되며,
+체크포인트와 회차별 중간 산출물은 Git으로 관리하지 않습니다.
+
+먼저 소수 회차로 실행 상태를 확인합니다.
+
+```powershell
+python scripts/wisetoto_odds_history_pipeline.py --start-year 2026 --end-year 2026 --max-total-rounds 2
+```
+
+전체 범위는 동일한 출력 경로로 다시 실행하면 기존 체크포인트에서 이어집니다.
+
+```powershell
+python scripts/wisetoto_odds_history_pipeline.py --start-year 2010 --end-year 2026
+```
+
 ## 데이터베이스 마이그레이션
 
 루트 가상환경을 활성화하고 `apps/api`로 이동한 뒤 실행합니다.
